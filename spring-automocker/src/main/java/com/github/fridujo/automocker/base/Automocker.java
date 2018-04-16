@@ -10,5 +10,6 @@ import java.lang.annotation.*;
 @Documented
 
 @MockPropertySources
+@MockWebMvc
 public @interface Automocker {
 }

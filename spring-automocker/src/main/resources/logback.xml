@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36}.%L - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+
+    <logger name="org.springframework" level="WARN"/>
+    <logger name="org.ehcache" level="WARN"/>
+    <logger name="class org.ehcache" level="WARN"/>
+    <logger name="org.hibernate" level="WARN"/>
+    <logger name="org.jboss.logging" level="WARN"/>
+    <logger name="com.mockrunner" level="WARN"/>
+    <logger name="com.jayway.jsonpath" level="WARN"/>
+
+    <!-- To remove WARN about Ignoring @PropertySource -->
+    <logger name="org.springframework.context.annotation.ConfigurationClassParser" level="ERROR"/>
+
+    <root level="DEBUG">
+        <appender-ref ref="STDOUT"/>
+    </root>
+</configuration>

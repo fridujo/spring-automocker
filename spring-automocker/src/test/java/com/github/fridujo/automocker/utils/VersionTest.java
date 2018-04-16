@@ -1,4 +1,4 @@
-package com.github.fridujo.automocker.context;
+package com.github.fridujo.automocker.utils;
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -7,8 +7,8 @@ import org.junit.jupiter.params.provider.MethodSource;
 
 import java.util.stream.Stream;
 
-import static com.github.fridujo.automocker.context.Version.major;
-import static com.github.fridujo.automocker.context.Version.spring;
+import static com.github.fridujo.automocker.utils.Version.major;
+import static com.github.fridujo.automocker.utils.Version.spring;
 import static org.assertj.core.api.Assertions.assertThat;
 
 class VersionTest {

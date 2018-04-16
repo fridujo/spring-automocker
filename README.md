@@ -15,7 +15,13 @@ Spring-Automocker was created to avoid re-writing the same boilerplate code and 
 ### Mocking strategies
 
 ##### Property sources
-The extension [`@MockPropertySources`](spring-automocker/src/main/java/com/github/fridujo/automocker/base/MockPropertySources.java) add a `ProtocolResolver` to Spring context resolving *properties file* as empty ones.
+The extension [`@MockPropertySources`](spring-automocker/src/main/java/com/github/fridujo/automocker/base/MockPropertySources.java) adds a `ProtocolResolver` to Spring context resolving *properties file* as empty ones.
+
+##### MVC controllers
+The extension [`@MockWebMvc`](spring-automocker/src/main/java/com/github/fridujo/automocker/base/MockWebMvc.java) sets up a `MockMvc`.
+This `MockMvc` instance is either wired on :
+* the `org.springframework.web.context.WebApplicationContext` if the current context is of such type
+* the `@Controller` annotated beans otherwise
 
 ## Example Use
 

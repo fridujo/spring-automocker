@@ -2,7 +2,6 @@ package com.github.fridujo.sample;
 
 
 import com.github.fridujo.automocker.base.Automocker;
-import com.github.fridujo.automocker.base.MockPropertySources;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,7 +20,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 @TestPropertySource(properties = {
     "text.literal = literal Test Text",
     "text.optional=optionalText"})
-public class PropertySourceApplicationTest {
+class PropertySourceApplicationTest {
 
     @Autowired
     private TextService service;
@@ -30,7 +29,7 @@ public class PropertySourceApplicationTest {
     private Optional<String> emptyOptional;
 
     @Test
-    public void property_source_is_mocked() {
+    void property_source_is_mocked() {
         assertThat(service.getLiteralText()).isEqualTo("literal Test Text");
         assertThat(service.getOptionalText()).isEqualTo("optionalText");
         assertThat(emptyOptional).isEmpty();

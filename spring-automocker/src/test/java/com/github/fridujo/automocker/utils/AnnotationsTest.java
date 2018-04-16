@@ -8,10 +8,10 @@ import java.util.Set;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class AnnotationsTest {
+class AnnotationsTest {
 
     @Test
-    public void search_annotated_annotations() {
+    void search_annotated_annotations() {
         Set<Annotations.AnnotatedAnnotation<MarkingAnnotation>> annotationSet = Annotations.getAnnotationsAnnotatedWith(SampleAnnotatedClass.class, MarkingAnnotation.class);
 
         assertThat(annotationSet)

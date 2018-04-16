@@ -1,4 +1,4 @@
-package com.github.fridujo.automocker.context;
+package com.github.fridujo.automocker.utils;
 
 import com.google.common.base.Splitter;
 import com.google.common.primitives.Ints;

@@ -1,9 +1,10 @@
 package com.github.fridujo.automocker.context;
 
-
+import com.github.fridujo.automocker.api.AfterBeanRegistration;
 import com.github.fridujo.automocker.api.BeforeBeanRegistration;
 import com.github.fridujo.automocker.utils.Annotations;
 import com.github.fridujo.automocker.utils.Classes;
+import com.github.fridujo.automocker.utils.Version;
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.config.ConfigurableListableBeanFactory;
 import org.springframework.beans.factory.support.BeanDefinitionRegistry;
@@ -52,6 +53,14 @@ class AutomockerPostProcessor implements BeanDefinitionRegistryPostProcessor, Pr
     @Override
     public void postProcessBeanDefinitionRegistry(BeanDefinitionRegistry registry)
         throws BeansException {
+        ExtendedBeanDefinitionRegistryImpl extendedBeanDefinitionRegistry = new ExtendedBeanDefinitionRegistryImpl(registry);
+
+        Set<Annotations.AnnotatedAnnotation<AfterBeanRegistration>> beforeBeanRegistrationAnnotations
+            = Annotations.getAnnotationsAnnotatedWith(testClass, AfterBeanRegistration.class);
+        beforeBeanRegistrationAnnotations.forEach(annotatedAnnotation -> Classes
+            .instanciate(annotatedAnnotation.parentAnnotation().value())
+            .execute(annotatedAnnotation.annotation(), extendedBeanDefinitionRegistry)
+        );
     }
 
     @Override

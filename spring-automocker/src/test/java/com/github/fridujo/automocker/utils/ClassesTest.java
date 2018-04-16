@@ -27,6 +27,16 @@ class ClassesTest {
             );
     }
 
+    @Test
+    void isPresent_returns_true_when_class_is_on_classpath() {
+        assertThat(Classes.isPresent("java.lang.String")).isTrue();
+    }
+
+    @Test
+    void isPresent_returns_false_when_class_is_not_on_classpath() {
+        assertThat(Classes.isPresent("missing.Someclass")).isFalse();
+    }
+
     public static class Instanciable {
 
     }

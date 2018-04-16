@@ -26,7 +26,7 @@ public final class Annotations {
             Arrays.stream(annotatedElement.getDeclaredAnnotations()).forEach(annotation -> {
                 Annotation superAnnotation = annotation.annotationType().getAnnotation(annotationType);
                 if (superAnnotation != null) {
-                    result.add(new AnnotatedAnnotation((A) superAnnotation, annotation));
+                    result.add(new AnnotatedAnnotation(superAnnotation, annotation));
                 } else {
                     result.addAll(getAnnotationsAnnotatedWith(annotation.annotationType(), annotationType, visited));
                 }

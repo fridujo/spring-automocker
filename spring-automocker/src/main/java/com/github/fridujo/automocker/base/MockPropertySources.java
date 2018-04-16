@@ -21,7 +21,7 @@ import java.lang.annotation.*;
 public @interface MockPropertySources {
 
     class MockPropertySourcesExecutable implements BeforeBeanRegistrationExecutable<MockPropertySources> {
-        static ProtocolResolver MOCK_PROPERTIES_PROTOCOL_RESOLVER = new MockPropertiesProtocolResolver();
+        static final ProtocolResolver MOCK_PROPERTIES_PROTOCOL_RESOLVER = new MockPropertiesProtocolResolver();
 
         @Override
         public void execute(MockPropertySources annotation, ConfigurableApplicationContext context) {

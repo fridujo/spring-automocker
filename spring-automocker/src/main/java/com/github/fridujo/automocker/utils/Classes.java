@@ -12,4 +12,13 @@ public final class Classes {
             throw new IllegalStateException("Cannot instanciate class " + clazz.getName() + ": " + e.getMessage(), e);
         }
     }
+
+    public static boolean isPresent(String className) {
+        try {
+            Class.forName(className);
+            return true;
+        } catch (ClassNotFoundException | NoClassDefFoundError e) {
+            return false;
+        }
+    }
 }
