@@ -1,5 +1,8 @@
 # Spring-Automocker
 
+[![Build Status](https://travis-ci.org/fridujo/spring-automocker.svg?branch=master)](https://travis-ci.org/fridujo/spring-automocker)
+[![Coverage Status](https://coveralls.io/repos/github/fridujo/spring-automocker/badge.svg?branch=master)](https://coveralls.io/github/fridujo/spring-automocker?branch=master)
+
 Automatic IO mocking tool for Spring's JavaConfig
 
 ### Synopsis
