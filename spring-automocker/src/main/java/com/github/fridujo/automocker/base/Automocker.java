@@ -1,5 +1,7 @@
 package com.github.fridujo.automocker.base;
 
+import com.github.fridujo.automocker.api.ResetMocks;
+
 import java.lang.annotation.*;
 
 /**
@@ -11,5 +13,7 @@ import java.lang.annotation.*;
 
 @MockPropertySources
 @MockWebMvc
+@MockJdbc
+@ResetMocks
 public @interface Automocker {
 }

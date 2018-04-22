@@ -23,6 +23,12 @@ This `MockMvc` instance is either wired on :
 * the `org.springframework.web.context.WebApplicationContext` if the current context is of such type
 * the `@Controller` annotated beans otherwise
 
+##### JDBC dataSources
+The extension [`@MockJdbc`](spring-automocker/src/main/java/com/github/fridujo/automocker/base/MockJdbc.java)
+* modifies `DataSource` beans by making them point to a dedicated H2 in-memory database.
+* adds a convenient [`DataSourceLocator`](spring-automocker/src/main/java/com/github/fridujo/automocker/api/jdbc/DataSourceLocator.java) to easily access one or several `DataSource`
+* adds a [`DataSourceResetter`](spring-automocker/src/main/java/com/github/fridujo/automocker/api/jdbc/DataSourceResetter.java) to truncate all tables after each test
+
 ## Example Use
 
 As Spring-Automocker uses **spring-test** `org.springframework.test.context.ContextCustomizerFactory` extension mechanism, it is compatible with Spring >= 4.3 (so spring-boot >= 1.4).

@@ -21,6 +21,7 @@
 
         <hamcrest.version>1.3</hamcrest.version>
         <assertj.version>3.9.1</assertj.version>
+        <h2.version>1.4.197</h2.version>
         <junit.jupiter.version>5.1.1</junit.jupiter.version>
         <junit.platform.version>1.1.1</junit.platform.version>
     </properties>
@@ -30,6 +31,7 @@
 
         <module>samples/property-source-sample</module>
         <module>samples/mvc-sample</module>
+        <module>samples/jdbc-sample</module>
     </modules>
 
     <scm>
@@ -76,13 +78,6 @@
                 <groupId>org.springframework</groupId>
                 <artifactId>spring-web</artifactId>
                 <version>${spring.version}</version>
-            </dependency>
-
-            <!-- Spring-boot dependencies -->
-            <dependency>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-starter-web</artifactId>
-                <version>${spring.boot.version}</version>
             </dependency>
 
             <!-- Utilitarian dependencies -->
@@ -141,6 +136,13 @@
                 <version>2.18.0</version>
                 <scope>test</scope>
             </dependency>
+            <dependency>
+                <groupId>com.h2database</groupId>
+                <artifactId>h2</artifactId>
+                <version>1.4.197</version>
+                <scope>test</scope>
+            </dependency>
+
             <dependency>
                 <groupId>org.junit.jupiter</groupId>
                 <artifactId>junit-jupiter-api</artifactId>

@@ -21,4 +21,12 @@ public final class Classes {
             return false;
         }
     }
+
+    public static Class<?> forName(String className) {
+        try {
+            return Class.forName(className);
+        } catch (ClassNotFoundException e) {
+            throw new IllegalStateException("Cannot load class " + className);
+        }
+    }
 }

@@ -37,11 +37,21 @@ class ClassesTest {
         assertThat(Classes.isPresent("missing.Someclass")).isFalse();
     }
 
-    public static class Instanciable {
+    @Test
+    void forName_returns_class_object_when_present_on_classpath() {
+        assertThat(Classes.forName("java.lang.String")).isEqualTo(String.class);
+    }
 
+    @Test
+    void forName_throws_when_class_is_not_on_classpath() {
+        assertThatExceptionOfType(IllegalStateException.class)
+            .isThrownBy(() -> Classes.forName("missing.Someclass"))
+            .withMessage("Cannot load class missing.Someclass");
+    }
+
+    public static class Instanciable {
     }
 
     private static class Uninstanciable {
-
     }
 }

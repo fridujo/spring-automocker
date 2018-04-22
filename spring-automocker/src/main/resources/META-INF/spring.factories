@@ -1,3 +1,5 @@
-# Spring Test ContextCustomizerFactories
 org.springframework.test.context.ContextCustomizerFactory=\
 com.github.fridujo.automocker.context.AutomockerContextCustomizerFactory
+
+org.springframework.test.context.TestExecutionListener=\
+com.github.fridujo.automocker.context.ResettableTestExecutionListener

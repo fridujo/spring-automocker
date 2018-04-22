@@ -1,0 +1,9 @@
+order:
+  datasource:
+    driverClassName: org.hsqldb.jdbcDriver
+    url: jdbc:hsqldb:mem:order
+
+customer:
+  datasource:
+    driverClassName: org.hsqldb.jdbcDriver
+    url: jdbc:hsqldb:mem:customer
