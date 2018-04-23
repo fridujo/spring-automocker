@@ -24,11 +24,19 @@ This `MockMvc` instance is either wired on :
 * the `org.springframework.web.context.WebApplicationContext` if the current context is of such type
 * the `@Controller` annotated beans otherwise
 
-##### JDBC dataSources
+##### JDBC Data Sources
 The extension [`@MockJdbc`](spring-automocker/src/main/java/com/github/fridujo/automocker/base/MockJdbc.java)
-* modifies `DataSource` beans by making them point to a dedicated H2 in-memory database.
-* adds a convenient [`DataSourceLocator`](spring-automocker/src/main/java/com/github/fridujo/automocker/api/jdbc/DataSourceLocator.java) to easily access one or several `DataSource`
+* modifies `javax.sql.DataSource` beans by making them point to a dedicated H2 in-memory database.
+* adds a [`DataSourceLocator`](spring-automocker/src/main/java/com/github/fridujo/automocker/api/jdbc/DataSourceLocator.java) to access one or several `DataSource`
 * adds a [`DataSourceResetter`](spring-automocker/src/main/java/com/github/fridujo/automocker/api/jdbc/DataSourceResetter.java) to truncate all tables after each test
+
+##### JMS Connection Factories
+The extension [`@MockJms`](spring-automocker/src/main/java/com/github/fridujo/automocker/base/MockJms.java)
+* replace all `javax.jms.ConnectionFactory` beans by **mockrunner-jms** `MockConnectionFactory` ones
+* for each `javax.jms.ConnectionFactory` beans adds a [`JmsMock`](spring-automocker/src/main/java/com/github/fridujo/automocker/api/jms/JmsMock.java) with the same qualifiers for simplified JMS operations usage
+* adds a [`JmsMockLocator`](spring-automocker/src/main/java/com/github/fridujo/automocker/api/jms/JmsMockLocator.java) to access one or several [`JmsMock`](spring-automocker/src/main/java/com/github/fridujo/automocker/api/jms/JmsMock.java)
+* adds a [`DestinationManagerResetter`](spring-automocker/src/main/java/com/github/fridujo/automocker/api/jms/DestinationManagerResetter.java) to remove messages from all queues after each test
+* if available, wraps the `ErrorHandler` of `JmsListenerContainerFactory` to access errors from matching [`JmsMock`](spring-automocker/src/main/java/com/github/fridujo/automocker/api/jms/JmsMock.java)
 
 ## Example Use
 
@@ -49,7 +57,7 @@ public class MyApplicationTest {
 
 	@Test
 	public void my_test() {
-		// TODO test injected service
+		// test injected service
 	}
 }
 ```
@@ -69,7 +77,7 @@ public class MyApplicationTest {
 
 	@Test
 	public void my_test() {
-		// TODO test injected service
+		// test injected service
 	}
 }
 ```
