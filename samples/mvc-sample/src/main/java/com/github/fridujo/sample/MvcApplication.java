@@ -14,7 +14,7 @@ import java.util.Map;
 import java.util.concurrent.atomic.AtomicInteger;
 
 /**
- * Sample web application.<br/>
+ * Sample web application.<br>
  * Run {@link #main(String[])} to launch.
  */
 @SpringBootApplication

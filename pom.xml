@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
@@ -10,6 +10,7 @@
 
     <name>Spring-Automocker reactor</name>
     <description>Reactor for Spring-Automocker projects.</description>
+    <url>https://github.com/fridujo/spring-automocker</url>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -36,6 +37,9 @@
 
     <scm>
         <url>https://github.com/fridujo/spring-automocker.git</url>
+        <connection>scm:git:ssh://git@github.com/fridujo/spring-automocker.git</connection>
+        <developerConnection>scm:git:ssh://git@github.com/fridujo/spring-automocker.git</developerConnection>
+        <tag>HEAD</tag>
     </scm>
 
     <licenses>
@@ -45,6 +49,15 @@
             <distribution>repo</distribution>
         </license>
     </licenses>
+
+    <developers>
+        <developer>
+            <id>ledoyen</id>
+            <name>Loïc Ledoyen</name>
+            <url>https://github.com/ledoyen</url>
+            <email>ledoyen.loic@gmail.com</email>
+        </developer>
+    </developers>
 
     <dependencies>
         <!-- Test dependencies -->
@@ -233,4 +246,11 @@
             <url>https://jitpack.io</url>
         </repository>
     </repositories>
+
+    <distributionManagement>
+        <snapshotRepository>
+            <id>ossrh</id>
+            <url>https://oss.sonatype.org/content/repositories/snapshots</url>
+        </snapshotRepository>
+    </distributionManagement>
 </project>
