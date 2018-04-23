@@ -49,7 +49,23 @@ class ClassesTest {
             .withMessage("Cannot load class missing.Someclass");
     }
 
+    @Test
+    void getValueFromProtectedField_when_field_exists() {
+        Object object = new Instanciable();
+        String existingFieldValue = Classes.getValueFromProtectedField(object, "existingField");
+        assertThat(existingFieldValue).as("Existing field value").isEqualTo("test");
+    }
+
+    @Test
+    void getValueFromProtectedField_when_field_does_not_exist() {
+        Object object = new Instanciable();
+        assertThatExceptionOfType(IllegalStateException.class)
+            .isThrownBy(() -> Classes.getValueFromProtectedField(object, "missingField"))
+            .withMessage("Cannot find field missingField in class com.github.fridujo.automocker.utils.ClassesTest$Instanciable");
+    }
+
     public static class Instanciable {
+        private final String existingField = "test";
     }
 
     private static class Uninstanciable {

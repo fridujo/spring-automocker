@@ -1,0 +1,10 @@
+buyer:
+  activemq:
+    broker-url: vm://localhost?broker.persistent=false
+    user: guest
+    password: guest
+seller:
+  activemq:
+    broker-url: vm://localhost?broker.persistent=false
+    user: guest
+    password: guest

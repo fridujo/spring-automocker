@@ -11,9 +11,12 @@ import java.lang.annotation.*;
 @Retention(RetentionPolicy.RUNTIME)
 @Documented
 
+@ResetMocks
 @MockPropertySources
 @MockWebMvc
 @MockJdbc
-@ResetMocks
+@MockJms
 public @interface Automocker {
 }
+
+

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xmlns="http://maven.apache.org/POM/4.0.0"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
         <artifactId>spring-automocker-reactor</artifactId>
@@ -9,22 +10,22 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>spring-automocker-jdbc-sample</artifactId>
+    <artifactId>jms-sample</artifactId>
 
     <properties>
-        <hsqldb.version>2.4.0</hsqldb.version>
+        <activemq.version>5.15.3</activemq.version>
     </properties>
 
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-data-jpa</artifactId>
+            <artifactId>spring-boot-starter-activemq</artifactId>
             <version>${spring.boot.version}</version>
         </dependency>
         <dependency>
-            <groupId>org.hsqldb</groupId>
-            <artifactId>hsqldb</artifactId>
-            <version>${hsqldb.version}</version>
+            <groupId>org.apache.activemq</groupId>
+            <artifactId>activemq-broker</artifactId>
+            <version>${activemq.version}</version>
         </dependency>
 
         <!-- Test dependencies -->
@@ -37,8 +38,8 @@
             <artifactId>spring-test-junit5</artifactId>
         </dependency>
         <dependency>
-            <groupId>com.h2database</groupId>
-            <artifactId>h2</artifactId>
+            <groupId>com.mockrunner</groupId>
+            <artifactId>mockrunner-jms</artifactId>
         </dependency>
     </dependencies>
 </project>
