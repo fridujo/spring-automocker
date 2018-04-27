@@ -8,7 +8,7 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>jdbc-sample</artifactId>
+    <artifactId>spring-automocker-jdbc-sample</artifactId>
 
     <properties>
         <hsqldb.version>2.4.0</hsqldb.version>

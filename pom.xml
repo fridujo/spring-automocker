@@ -30,9 +30,9 @@
     <modules>
         <module>spring-automocker</module>
 
-        <module>samples/property-source-sample</module>
-        <module>samples/mvc-sample</module>
-        <module>samples/jdbc-sample</module>
+        <module>samples/spring-automocker-property-source-sample</module>
+        <module>samples/spring-automocker-mvc-sample</module>
+        <module>samples/spring-automocker-jdbc-sample</module>
     </modules>
 
     <scm>
