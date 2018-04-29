@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.AnnotatedBeanDefinition;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.config.BeanDefinition;
 import org.springframework.beans.factory.support.AbstractBeanDefinition;
+import org.springframework.beans.factory.support.AutowireCandidateQualifier;
 import org.springframework.core.annotation.AnnotationUtils;
 import org.springframework.core.type.MethodMetadata;
 import org.springframework.core.type.StandardMethodMetadata;
@@ -16,11 +17,12 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Set;
 
+import static org.springframework.beans.factory.support.AutowireCandidateQualifier.VALUE_KEY;
+
 public final class BeanDefinitions {
 
     private static final ClassLoader BEAN_CLASS_LOADER = ClassUtils.getDefaultClassLoader();
     private static final String QUALIFIER_CLASS_NAME = Qualifier.class.getName();
-    private static final String VALUE_FIELD_NAME = "value";
 
     private BeanDefinitions() {
     }
@@ -61,9 +63,11 @@ public final class BeanDefinitions {
             }
 
             Map<String, Object> annotationAttributes = factoryMethodMetadata.getAnnotationAttributes(QUALIFIER_CLASS_NAME);
-            Object qualifierValue = annotationAttributes.get(VALUE_FIELD_NAME);
-            if (!"".equals(qualifierValue)) {
-                qualifiers.put(QUALIFIER_CLASS_NAME, qualifierValue);
+            if (annotationAttributes != null) {
+                Object qualifierValue = annotationAttributes.get(VALUE_KEY);
+                if (!"".equals(qualifierValue)) {
+                    qualifiers.put(QUALIFIER_CLASS_NAME, qualifierValue);
+                }
             }
         }
         return qualifiers;
@@ -75,7 +79,7 @@ public final class BeanDefinitions {
         Map<String, Object> qualityQualifiers = new HashMap<>();
         for (Map.Entry<String, Set<String>> annotationData : metaAnnotationMap.entrySet()) {
             if (annotationData.getValue().contains(QUALIFIER_CLASS_NAME)) {
-                Object qualifierValue = factoryMethodMetadata.getAnnotationAttributes(annotationData.getKey()).get(VALUE_FIELD_NAME);
+                Object qualifierValue = factoryMethodMetadata.getAnnotationAttributes(annotationData.getKey()).get(VALUE_KEY);
                 if (qualifierValue != null) {
                     qualityQualifiers.put(annotationData.getKey(), qualifierValue);
                 }
@@ -90,8 +94,8 @@ public final class BeanDefinitions {
         annotationsAnnotatedWithQualifier.forEach(annotationAnnotatedWithQualifier -> {
             Annotation qualityQualifier = annotationAnnotatedWithQualifier.annotation();
             Map<String, Object> annotationAttributes = AnnotationUtils.getAnnotationAttributes(qualityQualifier);
-            if (annotationAttributes.containsKey(VALUE_FIELD_NAME)) {
-                qualityQualifiers.put(qualityQualifier.annotationType().getName(), annotationAttributes.get(VALUE_FIELD_NAME));
+            if (annotationAttributes.containsKey(VALUE_KEY)) {
+                qualityQualifiers.put(qualityQualifier.annotationType().getName(), annotationAttributes.get(VALUE_KEY));
             }
         });
         return qualityQualifiers;

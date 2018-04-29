@@ -1,0 +1,9 @@
+management.metrics.export.graphite:
+    # The location of your Graphite server
+    host: mygraphitehost
+
+    # You will probably want to conditionally disable Graphite publishing in local development.
+    enabled: true
+
+    # The interval at which metrics are sent to Graphite. The default is 1 minute.
+    step: 1m

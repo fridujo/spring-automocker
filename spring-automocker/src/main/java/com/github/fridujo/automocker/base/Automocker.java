@@ -16,6 +16,7 @@ import java.lang.annotation.*;
 @MockWebMvc
 @MockJdbc
 @MockJms
+@MockMicrometerGraphite
 public @interface Automocker {
 }
 

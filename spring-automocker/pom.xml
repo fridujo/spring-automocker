@@ -69,5 +69,15 @@
             <artifactId>assertj-core</artifactId>
             <scope>provided</scope>
         </dependency>
+        <dependency>
+            <groupId>io.dropwizard.metrics</groupId>
+            <artifactId>metrics-graphite</artifactId>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>io.micrometer</groupId>
+            <artifactId>micrometer-registry-graphite</artifactId>
+            <scope>provided</scope>
+        </dependency>
     </dependencies>
 </project>
