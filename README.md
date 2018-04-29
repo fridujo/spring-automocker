@@ -38,6 +38,9 @@ The extension [`@MockJms`](spring-automocker/src/main/java/com/github/fridujo/au
 * adds a [`DestinationManagerResetter`](spring-automocker/src/main/java/com/github/fridujo/automocker/api/jms/DestinationManagerResetter.java) to remove messages from all queues after each test
 * if available, wraps the `ErrorHandler` of `JmsListenerContainerFactory` to access errors from matching [`JmsMock`](spring-automocker/src/main/java/com/github/fridujo/automocker/api/jms/JmsMock.java)
 
+##### Micrometer Graphite Meter Registry
+The extension [`@MockMicrometerGraphite`](spring-automocker/src/main/java/com/github/fridujo/automocker/base/MockMicrometerGraphite.java) replaces the default `GraphiteReporter` by one baked by [`GraphiteMock`](spring-automocker/src/main/java/com/github/fridujo/automocker/api/metrics/GraphiteMock.java) which can be injected like any other bean.
+
 ## Example Use
 
 As Spring-Automocker uses **spring-test** `org.springframework.test.context.ContextCustomizerFactory` extension mechanism, it is compatible with Spring >= 4.3 (so spring-boot >= 1.4).

@@ -39,6 +39,8 @@ public interface ExtendedBeanDefinitionRegistry {
         default Map<String, Object> getBeanQualifiers() {
             return BeanDefinitions.extractQualifiers(beanDefinition());
         }
+
+        String registerLinkedBeanDefinition(Class<?> beanClass);
     }
 
     class BeanDefinitionModifier {
