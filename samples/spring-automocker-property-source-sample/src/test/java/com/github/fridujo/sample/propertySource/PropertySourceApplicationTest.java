@@ -2,8 +2,6 @@ package com.github.fridujo.sample.propertySource;
 
 
 import com.github.fridujo.automocker.base.Automocker;
-import com.github.fridujo.sample.propertySource.PropertySourceApplication;
-import com.github.fridujo.sample.propertySource.TextService;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;

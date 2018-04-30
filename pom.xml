@@ -41,6 +41,11 @@
         <module>samples/spring-automocker-jdbc-sample</module>
         <module>samples/spring-automocker-jms-sample</module>
         <module>samples/spring-automocker-graphite-sample</module>
+
+        <module>starters/spring-automocker-starter</module>
+        <module>starters/spring-automocker-starter-web</module>
+        <module>starters/spring-automocker-starter-jdbc</module>
+        <module>starters/spring-automocker-starter-jms</module>
     </modules>
 
     <scm>
@@ -144,6 +149,12 @@
             <dependency>
                 <groupId>com.github.fridujo</groupId>
                 <artifactId>spring-automocker</artifactId>
+                <version>${project.version}</version>
+                <scope>test</scope>
+            </dependency>
+            <dependency>
+                <groupId>com.github.fridujo</groupId>
+                <artifactId>spring-automocker-starter</artifactId>
                 <version>${project.version}</version>
                 <scope>test</scope>
             </dependency>
