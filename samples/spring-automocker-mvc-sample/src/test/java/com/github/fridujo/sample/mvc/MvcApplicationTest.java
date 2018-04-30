@@ -1,7 +1,6 @@
 package com.github.fridujo.sample.mvc;
 
 import com.github.fridujo.automocker.base.Automocker;
-import com.github.fridujo.sample.mvc.MvcApplication;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;

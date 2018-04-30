@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xmlns="http://maven.apache.org/POM/4.0.0"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-
     <parent>
         <artifactId>spring-automocker-reactor</artifactId>
         <groupId>com.github.fridujo</groupId>
@@ -10,19 +10,18 @@
         <relativePath>../../pom.xml</relativePath>
     </parent>
 
-    <artifactId>spring-automocker-property-source-sample</artifactId>
+    <artifactId>spring-automocker-starter-jdbc</artifactId>
 
     <dependencies>
         <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-autoconfigure</artifactId>
-            <version>2.0.1.RELEASE</version>
-        </dependency>
-
-        <!-- Test dependencies -->
-        <dependency>
             <groupId>com.github.fridujo</groupId>
             <artifactId>spring-automocker-starter</artifactId>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.h2database</groupId>
+            <artifactId>h2</artifactId>
+            <scope>compile</scope>
         </dependency>
     </dependencies>
 </project>
