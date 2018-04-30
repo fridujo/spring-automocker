@@ -85,6 +85,33 @@ public class MyApplicationTest {
 
 ## Getting Started
 
+### Maven
+Add the following dependency to your **pom.xml**
+```xml
+<dependency>
+    <groupId>com.github.fridujo</groupId>
+    <artifactId>spring-automocker</artifactId>
+    <version>1.1.0</version>
+    <scope>test</scope>
+</dependency>
+```
+
+### Gradle
+Add the following dependency to your **build.gradle**
+```groovy
+repositories {
+	mavenCentral()
+}
+
+// ...
+
+dependencies {
+	// ...
+	testCompile('com.github.fridujo:spring-automocker:1.1.0')
+	// ...
+}
+```
+
 ### Building from Source
 
 You need [JDK-8](http://jdk.java.net/8/) to build Spring-Automocker. Core and samples can be built with Maven using the following command.
