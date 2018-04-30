@@ -1,10 +1,8 @@
 # Spring-Automocker
-
 [![Build Status](https://travis-ci.org/fridujo/spring-automocker.svg?branch=master)](https://travis-ci.org/fridujo/spring-automocker)
 [![Coverage Status](https://coveralls.io/repos/github/fridujo/spring-automocker/badge.svg?branch=master)](https://coveralls.io/github/fridujo/spring-automocker?branch=master)
 [![Maven Central](https://img.shields.io/maven-central/v/com.github.fridujo/spring-automocker.svg)](https://search.maven.org/#search|ga|1|a:"spring-automocker")
-
-### Synopsis
+[![License](https://img.shields.io/github/license/fridujo/spring-automocker.svg)](https://opensource.org/licenses/Apache-2.0)
 
 Automatic detection and mocking of Spring IO components.
 
