@@ -25,19 +25,20 @@ This `MockMvc` instance is either wired on :
 ##### JDBC Data Sources
 The extension [`@MockJdbc`](spring-automocker/src/main/java/com/github/fridujo/automocker/base/MockJdbc.java)
 * modifies `javax.sql.DataSource` beans by making them point to a dedicated H2 in-memory database.
-* adds a [`DataSourceLocator`](spring-automocker/src/main/java/com/github/fridujo/automocker/api/jdbc/DataSourceLocator.java) to access one or several `DataSource`
 * adds a [`DataSourceResetter`](spring-automocker/src/main/java/com/github/fridujo/automocker/api/jdbc/DataSourceResetter.java) to truncate all tables after each test
 
 ##### JMS Connection Factories
 The extension [`@MockJms`](spring-automocker/src/main/java/com/github/fridujo/automocker/base/MockJms.java)
 * replace all `javax.jms.ConnectionFactory` beans by **mockrunner-jms** `MockConnectionFactory` ones
 * for each `javax.jms.ConnectionFactory` beans adds a [`JmsMock`](spring-automocker/src/main/java/com/github/fridujo/automocker/api/jms/JmsMock.java) with the same qualifiers for simplified JMS operations usage
-* adds a [`JmsMockLocator`](spring-automocker/src/main/java/com/github/fridujo/automocker/api/jms/JmsMockLocator.java) to access one or several [`JmsMock`](spring-automocker/src/main/java/com/github/fridujo/automocker/api/jms/JmsMock.java)
 * adds a [`DestinationManagerResetter`](spring-automocker/src/main/java/com/github/fridujo/automocker/api/jms/DestinationManagerResetter.java) to remove messages from all queues after each test
 * if available, wraps the `ErrorHandler` of `JmsListenerContainerFactory` to access errors from matching [`JmsMock`](spring-automocker/src/main/java/com/github/fridujo/automocker/api/jms/JmsMock.java)
 
 ##### Micrometer Graphite Meter Registry
 The extension [`@MockMicrometerGraphite`](spring-automocker/src/main/java/com/github/fridujo/automocker/base/MockMicrometerGraphite.java) replaces the default `GraphiteReporter` by one baked by [`GraphiteMock`](spring-automocker/src/main/java/com/github/fridujo/automocker/api/metrics/GraphiteMock.java) which can be injected like any other bean.
+
+### Utilities
+The extension [`@RegisterTools`](spring-automocker/src/main/java/com/github/fridujo/automocker/base/RegisterTools.java) registers a [`BeanLocator`](spring-automocker/src/main/java/com/github/fridujo/automocker/api/tools/BeanLocator.java) to easily access beans by partial name.
 
 ## Example Use
 

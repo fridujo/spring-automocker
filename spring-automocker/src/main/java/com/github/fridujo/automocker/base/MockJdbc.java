@@ -3,7 +3,6 @@ package com.github.fridujo.automocker.base;
 import com.github.fridujo.automocker.api.AfterBeanRegistration;
 import com.github.fridujo.automocker.api.AfterBeanRegistrationExecutable;
 import com.github.fridujo.automocker.api.ExtendedBeanDefinitionRegistry;
-import com.github.fridujo.automocker.api.jdbc.DataSourceLocator;
 import com.github.fridujo.automocker.api.jdbc.DataSourceResetter;
 import com.github.fridujo.automocker.utils.Classes;
 import com.github.fridujo.automocker.utils.PropertiesBuilder;
@@ -48,8 +47,6 @@ public @interface MockJdbc {
                             .addPropertyValue("url",
                                 PROPERTY_PLACEHOLDER_HELPER.replacePlaceholders(annotation.url(), PropertiesBuilder.of("beanName", meta.name())));
                     });
-
-                    extendedBeanDefinitionRegistry.registerBeanDefinition(DataSourceLocator.class);
                 } else {
                     throw new IllegalStateException("\nAutomocker is missing class [" + H2_DATASOURCE_CLASS + "] to mock " + dataSourceBeans.size() + " bean(s) of type [" + DataSource.class.getName() + "]: " +
                         dataSourceBeans.stream().map(ExtendedBeanDefinitionRegistry.BeanDefinitionMetadata::name).collect(Collectors.joining(", ")) +
