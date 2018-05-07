@@ -18,6 +18,7 @@ import java.lang.annotation.*;
 @MockJdbc
 @MockJms
 @MockMicrometerGraphite
+@MockAmqp
 public @interface Automocker {
 }
 

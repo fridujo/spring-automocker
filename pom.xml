@@ -19,6 +19,7 @@
 
         <spring.version>5.0.5.RELEASE</spring.version>
         <spring.boot.version>2.0.1.RELEASE</spring.boot.version>
+        <spring.amqp.version>2.0.3.RELEASE</spring.amqp.version>
         <dropwizard.metrics.version>3.2.6</dropwizard.metrics.version>
         <micrometer.version>1.0.3</micrometer.version>
 
@@ -28,6 +29,7 @@
         <spring.test.junit5.version>1.0.3</spring.test.junit5.version>
         <h2.version>1.4.197</h2.version>
         <mockrunner.version>1.1.2</mockrunner.version>
+        <rabbitmq.mock.version>1.0.1</rabbitmq.mock.version>
 
         <junit.jupiter.version>5.1.1</junit.jupiter.version>
         <junit.platform.version>1.1.1</junit.platform.version>
@@ -46,6 +48,8 @@
         <module>starters/spring-automocker-starter-web</module>
         <module>starters/spring-automocker-starter-jdbc</module>
         <module>starters/spring-automocker-starter-jms</module>
+        <module>samples/spring-automocker-amqp-sample</module>
+        <module>starters/spring-automocker-starter-amqp</module>
     </modules>
 
     <scm>
@@ -109,6 +113,11 @@
                 <groupId>org.springframework</groupId>
                 <artifactId>spring-jms</artifactId>
                 <version>${spring.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.amqp</groupId>
+                <artifactId>spring-rabbit</artifactId>
+                <version>${spring.amqp.version}</version>
             </dependency>
 
             <!-- Utilitarian dependencies -->
@@ -198,6 +207,12 @@
                 <groupId>com.mockrunner</groupId>
                 <artifactId>mockrunner-jms</artifactId>
                 <version>${mockrunner.version}</version>
+                <scope>test</scope>
+            </dependency>
+            <dependency>
+                <groupId>com.github.fridujo</groupId>
+                <artifactId>rabbitmq-mock</artifactId>
+                <version>${rabbitmq.mock.version}</version>
                 <scope>test</scope>
             </dependency>
 

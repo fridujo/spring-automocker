@@ -1,0 +1,5 @@
+spring:
+  rabbitmq:
+    host: 192.168.0.20
+    username: remote
+    password: remote

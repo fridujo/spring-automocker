@@ -94,5 +94,13 @@ public interface ExtendedBeanDefinitionRegistry {
                 .forEach((qualifierType, qualifierValue) -> beanDefinition.addQualifier(new AutowireCandidateQualifier(qualifierType, qualifierValue)));
             return this;
         }
+
+        public BeanDefinitionModifier reset() {
+            setFactoryBeanName(null);
+            setFactoryMethodName(null);
+            removeConstructorArgumentValues();
+            removePropertyValues();
+            return this;
+        }
     }
 }
