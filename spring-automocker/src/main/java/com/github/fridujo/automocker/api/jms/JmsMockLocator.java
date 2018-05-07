@@ -1,12 +1,12 @@
 package com.github.fridujo.automocker.api.jms;
 
 import javax.jms.ConnectionFactory;
-import java.util.Map;
 import java.util.Optional;
 import java.util.Set;
 
 /**
  * Used to find {@link JmsMock} by {@link ConnectionFactory}.
+ *
  * @see JmsListenerContainerFactoryConfigurer
  */
 public class JmsMockLocator {

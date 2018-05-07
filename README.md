@@ -37,6 +37,9 @@ The extension [`@MockJms`](spring-automocker/src/main/java/com/github/fridujo/au
 ##### Micrometer Graphite Meter Registry
 The extension [`@MockMicrometerGraphite`](spring-automocker/src/main/java/com/github/fridujo/automocker/base/MockMicrometerGraphite.java) replaces the default `GraphiteReporter` by one baked by [`GraphiteMock`](spring-automocker/src/main/java/com/github/fridujo/automocker/api/metrics/GraphiteMock.java) which can be injected like any other bean.
 
+##### RabbitMQ Connection Factories
+The extension [`@MockAmqp`](spring-automocker/src/main/java/com/github/fridujo/automocker/base/MockAmqp.java) replaces all `org.springframework.amqp.rabbit.connection.ConnectionFactory` beans by **rabbitmq-mock** ones.
+
 ### Utilities
 The extension [`@RegisterTools`](spring-automocker/src/main/java/com/github/fridujo/automocker/base/RegisterTools.java) registers a [`BeanLocator`](spring-automocker/src/main/java/com/github/fridujo/automocker/api/tools/BeanLocator.java) to easily access beans by partial name.
 
