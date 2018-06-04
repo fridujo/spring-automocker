@@ -18,7 +18,11 @@ import org.springframework.beans.factory.support.RootBeanDefinition;
 
 import javax.jms.ConnectionFactory;
 import javax.sql.DataSource;
-import java.lang.annotation.*;
+import java.lang.annotation.Documented;
+import java.lang.annotation.ElementType;
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
+import java.lang.annotation.Target;
 import java.util.Map;
 import java.util.Set;
 import java.util.stream.Collectors;
@@ -56,10 +60,8 @@ public @interface MockJms {
 
                         meta.beanDefinitionModifier()
                             .copyFactoryQualifiersAsDetached()
+                            .reset()
                             .setBeanClass(MockConnectionFactory.class)
-                            .setFactoryBeanName(null)
-                            .setFactoryMethodName(null)
-                            .removePropertyValues()
                             .addConstructorIndexedArgumentValue(0, new RuntimeBeanReference(destinationManagerBeanName))
                             .addConstructorIndexedArgumentValue(1, new RuntimeBeanReference(configurationManagerBeanName));
 
