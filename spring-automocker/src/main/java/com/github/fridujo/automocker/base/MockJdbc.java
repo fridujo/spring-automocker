@@ -9,7 +9,11 @@ import com.github.fridujo.automocker.utils.PropertiesBuilder;
 import org.springframework.util.PropertyPlaceholderHelper;
 
 import javax.sql.DataSource;
-import java.lang.annotation.*;
+import java.lang.annotation.Documented;
+import java.lang.annotation.ElementType;
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
+import java.lang.annotation.Target;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -40,10 +44,8 @@ public @interface MockJdbc {
                     dataSourceBeans.forEach(meta -> {
                         meta.beanDefinitionModifier()
                             .copyFactoryQualifiersAsDetached()
+                            .reset()
                             .setBeanClass(Classes.forName(H2_DATASOURCE_CLASS))
-                            .setFactoryBeanName(null)
-                            .setFactoryMethodName(null)
-                            .removeConstructorArgumentValues()
                             .addPropertyValue("url",
                                 PROPERTY_PLACEHOLDER_HELPER.replacePlaceholders(annotation.url(), PropertiesBuilder.of("beanName", meta.name())));
                     });
