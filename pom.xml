@@ -29,7 +29,7 @@
         <mockito.version>2.18.3</mockito.version>
         <h2.version>1.4.197</h2.version>
         <mockrunner.version>1.1.2</mockrunner.version>
-        <rabbitmq.mock.version>1.0.2</rabbitmq.mock.version>
+        <rabbitmq.mock.version>1.0.3</rabbitmq.mock.version>
 
         <maven-surefire-plugin.version>2.21.0</maven-surefire-plugin.version>
         <junit.jupiter.version>5.2.0</junit.jupiter.version>
@@ -295,13 +295,6 @@
             </plugins>
         </pluginManagement>
     </build>
-
-    <repositories>
-        <repository>
-            <id>jitpack.io</id>
-            <url>https://jitpack.io</url>
-        </repository>
-    </repositories>
 
     <distributionManagement>
         <snapshotRepository>
