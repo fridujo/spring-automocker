@@ -17,22 +17,23 @@
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
 
-        <spring.version>5.0.5.RELEASE</spring.version>
-        <spring.boot.version>2.0.1.RELEASE</spring.boot.version>
+        <spring.version>5.0.6.RELEASE</spring.version>
+        <spring.boot.version>2.0.2.RELEASE</spring.boot.version>
         <spring.amqp.version>2.0.3.RELEASE</spring.amqp.version>
-        <dropwizard.metrics.version>3.2.6</dropwizard.metrics.version>
-        <micrometer.version>1.0.3</micrometer.version>
+
+        <dropwizard.metrics.version>4.0.2</dropwizard.metrics.version>
+        <micrometer.version>1.0.5</micrometer.version>
 
         <hamcrest.version>1.3</hamcrest.version>
-        <assertj.version>3.9.1</assertj.version>
-        <mockito.version>2.18.0</mockito.version>
-        <spring.test.junit5.version>1.0.3</spring.test.junit5.version>
+        <assertj.version>3.10.0</assertj.version>
+        <mockito.version>2.18.3</mockito.version>
         <h2.version>1.4.197</h2.version>
         <mockrunner.version>1.1.2</mockrunner.version>
-        <rabbitmq.mock.version>1.0.1</rabbitmq.mock.version>
+        <rabbitmq.mock.version>1.0.2</rabbitmq.mock.version>
 
-        <junit.jupiter.version>5.1.1</junit.jupiter.version>
-        <junit.platform.version>1.1.1</junit.platform.version>
+        <maven-surefire-plugin.version>2.21.0</maven-surefire-plugin.version>
+        <junit.jupiter.version>5.2.0</junit.jupiter.version>
+        <junit.platform.version>1.2.0</junit.platform.version>
     </properties>
 
     <modules>
@@ -180,12 +181,6 @@
                 <scope>test</scope>
             </dependency>
             <dependency>
-                <groupId>com.github.sbrannen</groupId>
-                <artifactId>spring-test-junit5</artifactId>
-                <version>${spring.test.junit5.version}</version>
-                <scope>test</scope>
-            </dependency>
-            <dependency>
                 <groupId>org.assertj</groupId>
                 <artifactId>assertj-core</artifactId>
                 <version>${assertj.version}</version>
@@ -265,7 +260,7 @@
             <plugins>
                 <plugin>
                     <artifactId>maven-surefire-plugin</artifactId>
-                    <version>2.19.1</version>
+                    <version>${maven-surefire-plugin.version}</version>
                     <dependencies>
                         <dependency>
                             <groupId>org.junit.platform</groupId>
