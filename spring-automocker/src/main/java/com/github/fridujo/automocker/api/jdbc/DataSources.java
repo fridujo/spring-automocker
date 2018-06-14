@@ -26,7 +26,7 @@ public final class DataSources {
     }
 
     public static void populateTable(DataSource datasource, String tableName, List<String> columns,
-                                     List<List<String>> values) throws SQLException {
+                                     List<List<String>> values) {
         StringBuilder sql = new StringBuilder("INSERT INTO ");
         sql.append(tableName)
             .append(" (");

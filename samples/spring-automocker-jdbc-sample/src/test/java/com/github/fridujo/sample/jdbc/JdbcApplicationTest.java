@@ -40,7 +40,7 @@ class JdbcApplicationTest {
 
     @SuppressWarnings("unchecked")
     private static List<String> listTables(DataSource dataSource)
-        throws MetaDataAccessException, SQLException {
+        throws MetaDataAccessException {
         return (List<String>) JdbcUtils.extractDatabaseMetaData(dataSource, dbmd -> {
             ResultSet rs = dbmd.getTables(null, null, null, new String[]{"TABLE"});
             List<String> names = new ArrayList<>();

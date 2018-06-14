@@ -46,8 +46,9 @@ public @interface MockJms {
         }
 
         private void modifyConnectionFactoryBeanDefinitions(ExtendedBeanDefinitionRegistry extendedBeanDefinitionRegistry) {
+            Class<ConnectionFactory> clazzToMock = ConnectionFactory.class;
             Set<ExtendedBeanDefinitionRegistry.BeanDefinitionMetadata> connectionFactoryBeans = extendedBeanDefinitionRegistry
-                .getBeanDefinitionsForClass(ConnectionFactory.class);
+                .getBeanDefinitionsForClass(clazzToMock);
 
             if (!connectionFactoryBeans.isEmpty()) {
                 if (Classes.isPresent(MOCKRUNNER_CONNECTION_FACTORY_CLASS)) {
@@ -82,7 +83,7 @@ public @interface MockJms {
                         extendedBeanDefinitionRegistry.registerBeanDefinition(JmsListenerContainerFactoryConfigurer.class);
                     }
                 } else {
-                    throw new IllegalStateException("\nAutomocker is missing class [" + MOCKRUNNER_CONNECTION_FACTORY_CLASS + "] to mock " + connectionFactoryBeans.size() + " bean(s) of type [" + DataSource.class.getName() + "]: " +
+                    throw new IllegalStateException("\nAutomocker is missing class [" + MOCKRUNNER_CONNECTION_FACTORY_CLASS + "] to mock " + connectionFactoryBeans.size() + " bean(s) of type [" + clazzToMock.getName() + "]: " +
                         connectionFactoryBeans.stream().map(ExtendedBeanDefinitionRegistry.BeanDefinitionMetadata::name).collect(Collectors.joining(", ")) +
                         "\nMake sure mockrunner-jms.jar is in the test classpath");
                 }

@@ -11,7 +11,7 @@ public class Connections {
 
     public static List<String> tables(Connection c) {
         List<String> tables = new ArrayList<>();
-        try (PreparedStatement ps = c.prepareStatement("SHOW TABLES"); ResultSet rs = ps.executeQuery();) {
+        try (PreparedStatement ps = c.prepareStatement("SHOW TABLES"); ResultSet rs = ps.executeQuery()) {
             while (rs.next()) {
                 tables.add(rs.getString(1));
             }

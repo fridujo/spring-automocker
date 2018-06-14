@@ -22,9 +22,10 @@ public interface ExtendedBeanDefinitionRegistry {
         return beanName;
     }
 
-    default void registerBeanDefinition(String beanName, AbstractBeanDefinition abstractBeanDefinition, Map<String, Object> qualifiers) {
+    default String registerBeanDefinition(String beanName, AbstractBeanDefinition abstractBeanDefinition, Map<String, Object> qualifiers) {
         qualifiers.forEach((qualifierType, qualifierValue) -> abstractBeanDefinition.addQualifier(new AutowireCandidateQualifier(qualifierType, qualifierValue)));
         registerBeanDefinition(beanName, abstractBeanDefinition);
+        return beanName;
     }
 
     interface BeanDefinitionMetadata {

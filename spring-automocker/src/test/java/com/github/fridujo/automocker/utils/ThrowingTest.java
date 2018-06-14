@@ -23,7 +23,7 @@ class ThrowingTest {
     }
 
     private enum Behavior {
-        DO_NOT_THROW, THROW_CHECKED, THROW_UNCHECKED;
+        DO_NOT_THROW, THROW_CHECKED, THROW_UNCHECKED
     }
 
     @Nested
