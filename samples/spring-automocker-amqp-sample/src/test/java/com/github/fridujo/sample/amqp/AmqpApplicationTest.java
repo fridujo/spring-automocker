@@ -1,5 +1,6 @@
 package com.github.fridujo.sample.amqp;
 
+import com.github.fridujo.automocker.api.metrics.GraphiteMock;
 import com.github.fridujo.automocker.base.Automocker;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -22,10 +23,15 @@ class AmqpApplicationTest {
 
     private final Sender sender;
     private final Receiver receiver;
+    private final GraphiteMock graphiteMock;
 
-    AmqpApplicationTest(@Autowired Sender sender, @Autowired Receiver receiver) {
+    AmqpApplicationTest(
+        @Autowired Sender sender,
+        @Autowired Receiver receiver,
+        @Autowired GraphiteMock graphiteMock) {
         this.sender = sender;
         this.receiver = receiver;
+        this.graphiteMock = graphiteMock;
     }
 
     @Test
@@ -41,5 +47,10 @@ class AmqpApplicationTest {
         );
 
         assertThat(receivedMessages).containsExactly("Hello from RabbitMQ!");
+
+
+        graphiteMock.afterReporting()
+            .assertThatMetric("rabbitmqPublished.name.rabbit.count").hasLastValue(1);
+        graphiteMock.assertThatMetric("rabbitmqConsumed.name.rabbit.count").hasLastValue(1);
     }
 }

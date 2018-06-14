@@ -7,9 +7,9 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
-public class AbstractGraphiteMock implements GraphiteSender {
+public class GraphiteSenderMock implements GraphiteSender {
 
-    protected final Map<String, List<Point>> metrics = new LinkedHashMap<>();
+    private final Map<String, List<Point>> metrics = new LinkedHashMap<>();
 
     @Override
     public void connect() {
@@ -39,5 +39,9 @@ public class AbstractGraphiteMock implements GraphiteSender {
 
     @Override
     public void close() {
+    }
+
+    public Map<String, List<Point>> getMetrics() {
+        return metrics;
     }
 }

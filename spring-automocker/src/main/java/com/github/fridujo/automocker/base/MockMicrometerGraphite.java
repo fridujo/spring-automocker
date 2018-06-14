@@ -6,6 +6,7 @@ import com.github.fridujo.automocker.api.AfterBeanRegistration;
 import com.github.fridujo.automocker.api.AfterBeanRegistrationExecutable;
 import com.github.fridujo.automocker.api.ExtendedBeanDefinitionRegistry;
 import com.github.fridujo.automocker.api.metrics.GraphiteMock;
+import com.github.fridujo.automocker.api.metrics.GraphiteSenderMock;
 import com.github.fridujo.automocker.utils.Classes;
 import io.micrometer.core.instrument.Clock;
 import io.micrometer.graphite.GraphiteConfig;
@@ -14,7 +15,11 @@ import io.micrometer.graphite.GraphiteMeterRegistry;
 import org.springframework.beans.factory.config.RuntimeBeanReference;
 import org.springframework.beans.factory.support.RootBeanDefinition;
 
-import java.lang.annotation.*;
+import java.lang.annotation.Documented;
+import java.lang.annotation.ElementType;
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
+import java.lang.annotation.Target;
 import java.util.Set;
 
 @Target(ElementType.TYPE)
@@ -42,7 +47,7 @@ public @interface MockMicrometerGraphite {
                 String graphiteReporterFactoryBeanName = extendedBeanDefinitionRegistry.registerBeanDefinition(GraphiteReporterFactory.class);
                 String graphiteMeterRegistryFactoryBeanName = extendedBeanDefinitionRegistry.registerBeanDefinition(GraphiteMeterRegistryFactory.class);
                 graphiteSenderBeans.forEach(meta -> {
-                    String graphiteMockBeanName = meta.registerLinkedBeanDefinition(GraphiteMock.class);
+                    String graphiteSenderMockBeanName = meta.registerLinkedBeanDefinition(GraphiteSenderMock.class);
                     String metricRegistryBeanName = meta.registerLinkedBeanDefinition(MetricRegistry.class);
 
                     String graphiteReporterBeanName = "Automocker" + meta.name() + "GraphiteReporter";
@@ -51,8 +56,14 @@ public @interface MockMicrometerGraphite {
                     graphiteReporterBeanDefinition.setFactoryMethodName("createGraphiteReporter");
                     graphiteReporterBeanDefinition.getConstructorArgumentValues().addIndexedArgumentValue(0, new RuntimeBeanReference(metricRegistryBeanName));
                     graphiteReporterBeanDefinition.getConstructorArgumentValues().addIndexedArgumentValue(1, new RuntimeBeanReference(graphiteConfigBeanName));
-                    graphiteReporterBeanDefinition.getConstructorArgumentValues().addIndexedArgumentValue(2, new RuntimeBeanReference(graphiteMockBeanName));
+                    graphiteReporterBeanDefinition.getConstructorArgumentValues().addIndexedArgumentValue(2, new RuntimeBeanReference(graphiteSenderMockBeanName));
                     extendedBeanDefinitionRegistry.registerBeanDefinition(graphiteReporterBeanName, graphiteReporterBeanDefinition, meta.getBeanQualifiers());
+
+                    String graphiteMockBeanName = "Automocker" + meta.name() + "GraphiteMock";
+                    RootBeanDefinition graphiteMockBeanDefinition = new RootBeanDefinition(GraphiteMock.class);
+                    graphiteMockBeanDefinition.getConstructorArgumentValues().addIndexedArgumentValue(0, new RuntimeBeanReference(graphiteSenderMockBeanName));
+                    graphiteMockBeanDefinition.getConstructorArgumentValues().addIndexedArgumentValue(1, new RuntimeBeanReference(graphiteReporterBeanName));
+                    extendedBeanDefinitionRegistry.registerBeanDefinition(graphiteMockBeanName, graphiteMockBeanDefinition, meta.getBeanQualifiers());
 
                     RootBeanDefinition graphiteMeterRegistryBeanDefinition = new RootBeanDefinition(GraphiteMeterRegistry.class);
                     graphiteMeterRegistryBeanDefinition.setFactoryBeanName(graphiteMeterRegistryFactoryBeanName);
@@ -67,12 +78,12 @@ public @interface MockMicrometerGraphite {
     }
 
     class GraphiteReporterFactory {
-        GraphiteReporter createGraphiteReporter(MetricRegistry metricRegistry, GraphiteConfig config, GraphiteMock graphiteMock) {
+        GraphiteReporter createGraphiteReporter(MetricRegistry metricRegistry, GraphiteConfig config, GraphiteSenderMock graphiteSenderMock) {
             return GraphiteReporter
                 .forRegistry(metricRegistry)
                 .convertRatesTo(config.rateUnits())
                 .convertDurationsTo(config.durationUnits())
-                .build(graphiteMock);
+                .build(graphiteSenderMock);
         }
     }
 

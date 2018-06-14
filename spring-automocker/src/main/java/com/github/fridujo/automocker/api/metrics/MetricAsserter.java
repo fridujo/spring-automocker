@@ -10,12 +10,12 @@ public class MetricAsserter extends AbstractMetricAsserter {
         super(metricName, points);
     }
 
-    public void hasLastValue(int expectedValue) {
+    public void hasLastValue(double expectedValue) {
         Point lastPoint = getLastPoint();
 
         assertThat(lastPoint.value)
             .as("Last recorded value of metric [" + metricName + "]")
-            .isEqualTo(String.valueOf(expectedValue));
+            .isEqualTo(expectedValue);
     }
 
     public DerivativeMetricAsserter derivative() {
