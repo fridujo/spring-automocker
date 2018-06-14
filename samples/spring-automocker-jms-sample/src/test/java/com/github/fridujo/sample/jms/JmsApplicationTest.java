@@ -2,6 +2,7 @@ package com.github.fridujo.sample.jms;
 
 import com.github.fridujo.automocker.api.jms.JmsMock;
 import com.github.fridujo.automocker.base.Automocker;
+import org.assertj.core.api.AbstractAssert;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,8 +25,8 @@ class JmsApplicationTest {
 
         buyerJmsMock.assertThatDestination("BOUGHT")
             .consumingFirstMessage()
-            .hasText(item)
-            .hasHeader(BusinessHeaders.BUYER_ID)
-            .hasHeader(BusinessHeaders.SELLER_ID);
+            .textSatisfies(actual -> actual.isEqualTo(item))
+            .headerSatisfies(BusinessHeaders.BUYER_ID, AbstractAssert::isNotNull)
+            .headerSatisfies(BusinessHeaders.SELLER_ID, AbstractAssert::isNotNull);
     }
 }
