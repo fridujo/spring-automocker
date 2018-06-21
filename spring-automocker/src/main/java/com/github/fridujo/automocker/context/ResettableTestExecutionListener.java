@@ -11,6 +11,20 @@ public class ResettableTestExecutionListener extends AbstractTestExecutionListen
 
     @Override
     public void afterTestMethod(TestContext testContext) {
+        resetAll(testContext);
+    }
+
+    @Override
+    public void afterTestClass(TestContext testContext) {
+        resetAll(testContext);
+    }
+
+    @Override
+    public void afterTestExecution(TestContext testContext) {
+        resetAll(testContext);
+    }
+
+    private void resetAll(TestContext testContext) {
         ResetMocks resetMocks = AnnotationUtils.getAnnotation(testContext.getTestClass(), ResetMocks.class);
         if (resetMocks != null && !resetMocks.disable()) {
             ApplicationContext applicationContext = testContext.getApplicationContext();
