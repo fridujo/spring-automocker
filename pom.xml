@@ -203,6 +203,12 @@
                 <artifactId>mockrunner-jms</artifactId>
                 <version>${mockrunner.version}</version>
                 <scope>test</scope>
+                <exclusions>
+                    <exclusion>
+                        <groupId>xerces</groupId>
+                        <artifactId>xercesImpl</artifactId>
+                    </exclusion>
+                </exclusions>
             </dependency>
             <dependency>
                 <groupId>com.github.fridujo</groupId>
