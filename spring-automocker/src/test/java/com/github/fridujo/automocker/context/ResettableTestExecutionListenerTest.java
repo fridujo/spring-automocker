@@ -7,6 +7,7 @@ import org.springframework.test.context.TestContext;
 import org.springframework.test.context.TestExecutionListener;
 
 import java.util.Set;
+import java.util.concurrent.atomic.AtomicInteger;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -31,9 +32,23 @@ class ResettableTestExecutionListenerTest {
         resettableTestExecutionListener.afterTestMethod(testContext);
 
         assertThat(resettableBeans)
-            .extracting("reset")
+            .extracting("resetCount")
             .as("Reset field collection")
-            .containsExactlyInAnyOrder(true, true, true);
+            .containsExactlyInAnyOrder(1, 1, 1);
+
+        resettableTestExecutionListener.afterTestClass(testContext);
+
+        assertThat(resettableBeans)
+            .extracting("resetCount")
+            .as("Reset field collection")
+            .containsExactlyInAnyOrder(2, 2, 2);
+
+        resettableTestExecutionListener.afterTestExecution(testContext);
+
+        assertThat(resettableBeans)
+            .extracting("resetCount")
+            .as("Reset field collection")
+            .containsExactlyInAnyOrder(3, 3, 3);
     }
 
     @Automocker
@@ -42,11 +57,11 @@ class ResettableTestExecutionListenerTest {
 
     static class ResettableBean implements Resettable {
 
-        private boolean reset = false;
+        private int resetCount = 0;
 
         @Override
         public void reset() {
-            reset = true;
+            resetCount ++;
         }
     }
 }
