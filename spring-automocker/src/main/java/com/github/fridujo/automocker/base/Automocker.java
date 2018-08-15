@@ -23,6 +23,7 @@ import java.lang.annotation.Target;
 @MockJms
 @MockMicrometerGraphite
 @MockAmqp
+@MockKafka
 public @interface Automocker {
 }
 

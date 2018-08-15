@@ -20,6 +20,7 @@
         <spring.version>5.0.6.RELEASE</spring.version>
         <spring.boot.version>2.0.2.RELEASE</spring.boot.version>
         <spring.amqp.version>2.0.3.RELEASE</spring.amqp.version>
+        <spring-kafka.version>2.1.8.RELEASE</spring-kafka.version>
 
         <dropwizard.metrics.version>4.0.2</dropwizard.metrics.version>
         <micrometer.version>1.0.5</micrometer.version>
@@ -51,6 +52,7 @@
         <module>starters/spring-automocker-starter-jms</module>
         <module>samples/spring-automocker-amqp-sample</module>
         <module>starters/spring-automocker-starter-amqp</module>
+        <module>samples/spring-automocker-kafka-sample</module>
     </modules>
 
     <scm>
@@ -119,6 +121,11 @@
                 <groupId>org.springframework.amqp</groupId>
                 <artifactId>spring-rabbit</artifactId>
                 <version>${spring.amqp.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.kafka</groupId>
+                <artifactId>spring-kafka</artifactId>
+                <version>${spring-kafka.version}</version>
             </dependency>
 
             <!-- Utilitarian dependencies -->
