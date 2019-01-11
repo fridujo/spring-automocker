@@ -2,7 +2,7 @@ language: java
 cache:
   directories:
   - "$HOME/.m2"
-script: mvn test cobertura:cobertura
+script: mvn test cobertura:cobertura -P samples
 after_success:
 - bash <(curl -s https://codecov.io/bash)
 - openssl aes-256-cbc -pass pass:$ENCRYPTION_PASSWORD -in $GPG_DIR/pubring.gpg.enc -out $GPG_DIR/pubring.gpg -d
