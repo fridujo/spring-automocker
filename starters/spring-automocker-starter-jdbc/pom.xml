@@ -16,11 +16,13 @@
         <dependency>
             <groupId>com.github.fridujo</groupId>
             <artifactId>spring-automocker-starter</artifactId>
+            <version>${automocker.version}</version>
             <scope>compile</scope>
         </dependency>
         <dependency>
             <groupId>com.h2database</groupId>
             <artifactId>h2</artifactId>
+            <version>${h2.version}</version>
             <scope>compile</scope>
         </dependency>
     </dependencies>
