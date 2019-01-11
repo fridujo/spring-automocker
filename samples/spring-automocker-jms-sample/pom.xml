@@ -12,15 +12,11 @@
 
     <artifactId>spring-automocker-jms-sample</artifactId>
 
-    <properties>
-        <activemq.version>5.15.3</activemq.version>
-    </properties>
-
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-activemq</artifactId>
-            <version>${spring.boot.version}</version>
+            <version>${spring-boot.version}</version>
         </dependency>
         <dependency>
             <groupId>org.apache.activemq</groupId>

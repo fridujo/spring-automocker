@@ -11,15 +11,11 @@
 
     <artifactId>spring-automocker-jdbc-sample</artifactId>
 
-    <properties>
-        <hsqldb.version>2.4.0</hsqldb.version>
-    </properties>
-
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-jpa</artifactId>
-            <version>${spring.boot.version}</version>
+            <version>${spring-boot.version}</version>
         </dependency>
         <dependency>
             <groupId>org.hsqldb</groupId>

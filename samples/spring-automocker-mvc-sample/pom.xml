@@ -10,13 +10,12 @@
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>spring-automocker-mvc-sample</artifactId>
-
-
+    
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
-            <version>${spring.boot.version}</version>
+            <version>${spring-boot.version}</version>
         </dependency>
         <dependency>
             <groupId>org.slf4j</groupId>

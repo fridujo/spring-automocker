@@ -12,15 +12,11 @@
 
     <artifactId>spring-automocker-graphite-sample</artifactId>
 
-    <properties>
-        <micrometer.version>1.0.3</micrometer.version>
-    </properties>
-
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-actuator</artifactId>
-            <version>${spring.boot.version}</version>
+            <version>${spring-boot.version}</version>
         </dependency>
         <dependency>
             <groupId>io.micrometer</groupId>
