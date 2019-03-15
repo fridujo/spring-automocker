@@ -55,7 +55,6 @@
         <module>starters/spring-automocker-starter-web</module>
         <module>starters/spring-automocker-starter-jdbc</module>
         <module>starters/spring-automocker-starter-jms</module>
-        <module>samples/spring-automocker-amqp-sample</module>
         <module>starters/spring-automocker-starter-amqp</module>
     </modules>
 
@@ -330,6 +329,7 @@
                 <module>samples/spring-automocker-mvc-sample</module>
                 <module>samples/spring-automocker-jdbc-sample</module>
                 <module>samples/spring-automocker-jms-sample</module>
+                <module>samples/spring-automocker-amqp-sample</module>
                 <module>samples/spring-automocker-graphite-sample</module>
             </modules>
         </profile>
