@@ -29,7 +29,7 @@
         <servlet-api.version>4.0.1</servlet-api.version>
         <jms-api.version>2.0.1</jms-api.version>
         <activemq.version>5.15.8</activemq.version>
-        <jackson.version>2.9.8</jackson.version>
+        <jackson.version>2.9.9.1</jackson.version>
 
         <hamcrest.version>2.1</hamcrest.version>
         <assertj.version>3.12.1</assertj.version>
